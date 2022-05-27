@@ -34,7 +34,7 @@ public class Controlador {
 		return service.listarId(id);
 	}
 
-	@PutMapping(path = "/id")
+	@PutMapping(path = { "/id" })
 	public Persona editar(Persona p, @PathVariable("id") int id) {
 		p.setId(id);
 		return service.edit(p);
