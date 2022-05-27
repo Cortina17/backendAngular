@@ -2,36 +2,39 @@ package com.capgemini.backendAngular;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class PersonaServiceImp implements PersonaService {
+
+	@Autowired
+	private PersonaRepositorio repositorio;
 
 	@Override
 	public List<Persona> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorio.findAll();
 	}
 
 	@Override
 	public Persona listarId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorio.findById(id);
 	}
 
 	@Override
 	public Persona edit(Persona p) {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorio.save(p);
 	}
 
 	@Override
 	public Persona add(Persona p) {
-		// TODO Auto-generated method stub
-		return null;
+		return repositorio.save(p);
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-
+		Persona p = repositorio.findById(id);
+		if (p != null) {
+			repositorio.delete(p);
+		}
 	}
 
 }
