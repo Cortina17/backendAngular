@@ -3,6 +3,7 @@ package com.capgemini.backendAngular;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +39,10 @@ public class Controlador {
 	public Persona editar(Persona p, @PathVariable("id") int id) {
 		p.setId(id);
 		return service.edit(p);
+	}
+
+	@DeleteMapping(path = { "/id" })
+	public void delete(@PathVariable("id") int id) {
+		service.delete(id);
 	}
 }
